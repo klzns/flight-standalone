@@ -1,4 +1,4 @@
-/*! Flight v1.0.9 | (c) Twitter, Inc. | MIT License */
+/*! Flight v1.0.10 | (c) Twitter, Inc. | MIT License */
 (function(context) {
   var factories = {}, loaded = {};
   var isArray = Array.isArray || function(obj) {
@@ -209,7 +209,7 @@ define('lib/utils', [], function () {
         };
     return utils;
 });
-define('tools/debug/debug', [], function () {
+define('lib/debug', [], function () {
     var logFilter;
     //******************************************************************************************
     // Search object model
@@ -378,7 +378,7 @@ define('tools/debug/debug', [], function () {
 // ==========================================
 define('lib/compose', [
     './utils',
-    '../tools/debug/debug'
+    './debug'
 ], function (util, debug) {
     //enumerables are shims - getOwnPropertyDescriptor shim doesn't work
     var canWriteProtect = debug.enabled && !util.isEnumerable(Object, 'getOwnPropertyDescriptor');
@@ -661,7 +661,7 @@ define('lib/registry', ['./utils'], function (util) {
 define('lib/base', [
     './utils',
     './registry',
-    '../tools/debug/debug'
+    './debug'
 ], function (utils, registry, debug) {
     //common mixin allocates basic functionality - used by all component prototypes
     //callback context is bound to component
@@ -903,7 +903,7 @@ define('lib/component', [
     './base',
     './registry',
     './logger',
-    '../tools/debug/debug'
+    './debug'
 ], function (advice, utils, compose, withBase, registry, withLogging, debug) {
     var functionNameRegEx = /function (.*?)\s?\(/;
     //teardown for all instances of this constructor
